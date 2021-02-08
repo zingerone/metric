@@ -34,6 +34,8 @@ func resolveOptions(opt []Option) (*Options, error) {
 	return o, nil
 
 }
+
+// ServiceName this function we use for service name
 func ServiceName(serviceName string) Option {
 	return func(o *Options) error {
 		o.serviceName = serviceName
@@ -41,6 +43,7 @@ func ServiceName(serviceName string) Option {
 	}
 }
 
+// SetEnv this funtion we use for set env
 func SetEnv(env string) Option {
 	return func(o *Options) error {
 		o.env = env
@@ -48,6 +51,7 @@ func SetEnv(env string) Option {
 	}
 }
 
+//SetMaxMessageOnPayload this function we use for max message on payload
 func SetMaxMessageOnPayload(maxProc int) Option {
 	return func(o *Options) error {
 		o.maxMessageOnPayload = maxProc
@@ -55,7 +59,7 @@ func SetMaxMessageOnPayload(maxProc int) Option {
 	}
 }
 
-// this function for set global tracer
+// SetGlobal this function for set global tracer
 func SetGlobal(host, port string, opts ...Option) error {
 	opt, _ := resolveOptions(opts)
 	addr := fmt.Sprintf("%s:%s", host, port)
